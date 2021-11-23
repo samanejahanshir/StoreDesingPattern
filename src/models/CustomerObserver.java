@@ -1,11 +1,29 @@
 package models;
 
-public class CustomerObserver {
+import java.util.ArrayList;
+import java.util.List;
+
+public class CustomerObserver implements Subscriber {
     private String Username;
     private String password;
     private Long mobileNumber;
     private String email;
     private String address;
+    List<Product> publisherList=new ArrayList<>();
+
+    public void addOneToPublisherList(Product product) {
+        this.publisherList.add(product);
+    }
+    public void removeOneFromPublisherList(Product product) {
+        this.publisherList.remove(product);
+    }
+    public List<Product> getPublisherList() {
+        return publisherList;
+    }
+
+    public void setPublisherList(List<Product> publisherList) {
+        this.publisherList = publisherList;
+    }
 
     public String getUsername() {
         return Username;
@@ -45,5 +63,10 @@ public class CustomerObserver {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String notifyMe(String message) {
+        return message+" "+email;
     }
 }
