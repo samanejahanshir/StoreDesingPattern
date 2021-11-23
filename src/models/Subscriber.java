@@ -1,6 +1,6 @@
 package models;
 
 public interface Subscriber {
-    public void notifyMe();
+    public String notifyMe(String message);
 
 }
